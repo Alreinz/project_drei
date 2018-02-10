@@ -9,6 +9,7 @@ public class Weapon : MonoBehaviour {
     public GameObject bullet;
     public float spread;
     public float reloadTime;
+	public float recoil;
 
     public bool loaded = true;
     
@@ -18,9 +19,10 @@ public class Weapon : MonoBehaviour {
             bulletObject.transform.position = this.transform.position;
 
             float actualSpread = Random.Range(-spread, spread);
-            //Debug.Log(direction);
+			Vector2 offset = new Vector2(0, actualSpread);
+
             Projectile bulletScript = bulletObject.GetComponent<Projectile>();
-            bulletScript.Initialize(direction);
+            bulletScript.Initialize(direction + offset);
             loaded = false;
             Invoke("Reload", reloadTime);
             return true;

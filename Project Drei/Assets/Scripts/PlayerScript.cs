@@ -17,6 +17,12 @@ public class PlayerScript : Actor {
         float rotateZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         weaponModel.transform.rotation = Quaternion.Euler(0f, 0f, rotateZ);
 
+		if ( rotateZ > 90 || rotateZ < -90 ) {
+			sprite.flipX = true;
+		} else {
+			sprite.flipX = false;
+		}
+
         if ( Input.GetKey(KeyCode.Mouse0)) {
             Attack();
         }
@@ -38,6 +44,22 @@ public class PlayerScript : Actor {
         }
     }
 
+    public void MoveUp () {
+        body.AddForce(new Vector2(0, speed));
+    }
+
+    public void MoveDown() {
+        body.AddForce(new Vector2(0, -speed));
+    }
+
+    public void MoveLeft () {
+		body.AddForce(new Vector2(-speed, 0));
+	}
+
+	public void MoveRight () {
+		body.AddForce(new Vector2(speed, 0));
+	}
+
     public void EquipWeapon ( Weapon weapon ) {
 
     }
@@ -47,10 +69,34 @@ public class PlayerScript : Actor {
             weapon.transform.position = weaponModel.firePosition.position;
             weaponModel.GetComponent<SpriteRenderer>().sprite = weapon.sprite;
             bool weaponFired = weapon.Fire(direction);
-            if ( weaponFired ) {    
-                float rotateZ = Mathf.Atan2(direction.normalized.y, direction.normalized.x) * Mathf.Rad2Deg;
-                Debug.Log("player facing: " + rotateZ);
+            if ( weaponFired ) {
+				float recoil = weapon.recoil;
+				body.AddForce(-direction * recoil, ForceMode2D.Impulse);
             }
         }
     }
+	
+	public void TakeDamage ( int damage ) {
+		if ( damage > 0 ) {
+			currentHealth -= damage;
+			if ( currentHealth <= 0 ) {
+				Die();
+			}
+		}
+	}
+
+	public void Die () {
+		if ( currentHealth <= 0 ) {
+			Destroy(this.gameObject);
+		}
+	}
+
+	private void OnCollisionEnter2D ( Collision2D collision ) {
+		GameObject collided = collision.gameObject;
+		if ( collided.tag == "EnemyProjectile" ) {
+			Projectile projectile = collided.GetComponent<Projectile>();
+			int damage = projectile.damage;
+			TakeDamage(damage);
+		}
+	}
 }

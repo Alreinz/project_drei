@@ -14,7 +14,6 @@ public class WeaponModel : MonoBehaviour {
 
     void Update() {
         float rotationZ = transform.localEulerAngles.z;
-        Debug.Log(rotationZ);
         if (rotationZ > 90 && rotationZ < 270) {
             spriteRenderer.flipY = true;
         } else {

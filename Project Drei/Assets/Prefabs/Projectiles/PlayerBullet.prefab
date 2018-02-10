@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 50106609541716402}
   - component: {fileID: 61336970592000848}
   m_Layer: 13
-  m_Name: Bullet
+  m_Name: PlayerBullet
   m_TagString: FriendlyProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,7 +52,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1306596532753404}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.7091594, y: 3.709584, z: 2.7294972}
+  m_LocalPosition: {x: 0.75839436, y: 1.7177632, z: -1.244833}
   m_LocalScale: {x: 2, y: 2, z: 3.3194573}
   m_Children:
   - {fileID: 4736065526176408}
@@ -65,13 +65,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1224703144554504}
-  m_LocalRotation: {x: 0, y: -0, z: 0.7071068, w: -0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4264878002311484}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 270}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &50106609541716402
 Rigidbody2D:
   serializedVersion: 4
@@ -128,8 +128,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a9c57dcbe7555b48a05eba89144bc57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-  speed: 50
+  damage: 1
+  speed: 15
+  duration: 1
 --- !u!212 &212537439289649056
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -164,7 +165,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7e89f75b3088a694ba45f3882d815ca8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bbc55ece5f5769a438f62549e9864519, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
