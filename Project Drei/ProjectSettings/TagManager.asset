@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - EnemyProjectile
   - FriendlyProjectile
+  - Destructible
   layers:
   - Default
   - TransparentFX
@@ -17,13 +18,13 @@ TagManager:
   - UI
   - 
   - 
-  - PlayerCollision
-  - PlayerHurtbox
+  - Player
+  - Terrain
   - Projectile
-  - 
   - Enemy
-  - 
-  - 
+  - Destructible
+  - FriendlyProjectile
+  - EnemyProjectile
   - 
   - 
   - 
