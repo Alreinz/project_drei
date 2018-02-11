@@ -53,7 +53,7 @@ public class EnemyGrunt : Actor {
 	}
 
 	void SearchPlayer () {
-		player = GameObject.Find("Player");
+		player = GameObject.FindGameObjectWithTag("Player");
 		Vector2 playerPos = player.transform.position;
 		Vector2 pos = this.transform.position;
 		Vector2 direction = (playerPos - pos).normalized;

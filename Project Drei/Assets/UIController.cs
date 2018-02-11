@@ -9,6 +9,10 @@ public class UIController : MonoBehaviour {
 	public Text score;
 	public Image health;
 
+	public void Start () {
+			
+	}
+
 	// Update is called once per frame
 	void Update () {
 		UpdateHealth();

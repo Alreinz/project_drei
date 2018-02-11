@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 50106609541716402}
   - component: {fileID: 61336970592000848}
   m_Layer: 13
-  m_Name: PlayerBullet
+  m_Name: MachineGunBullet
   m_TagString: FriendlyProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
