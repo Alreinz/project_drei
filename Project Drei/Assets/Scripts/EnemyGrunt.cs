@@ -53,23 +53,27 @@ public class EnemyGrunt : Actor {
 	}
 
 	void SearchPlayer () {
-		player = GameObject.FindGameObjectWithTag("Player");
-		Vector2 playerPos = player.transform.position;
-		Vector2 pos = this.transform.position;
-		Vector2 direction = (playerPos - pos).normalized;
-		///Debug.Log( Vector2.Distance(playerPos, pos) );
+		player = GameObject.Find("Player");
+		if ( player ) {
+			Vector2 playerPos = player.transform.position;
+			Vector2 pos = this.transform.position;
+			Vector2 direction = (playerPos - pos).normalized;
+			///Debug.Log( Vector2.Distance(playerPos, pos) );
 		
-		RaycastHit2D[] hits = new RaycastHit2D[2];
-		GetComponent<BoxCollider2D>().enabled = false;
-		RaycastHit2D hit = Physics2D.Raycast(pos, direction, searchRange);
-		GetComponent<BoxCollider2D>().enabled = true;
+			RaycastHit2D[] hits = new RaycastHit2D[2];
+			GetComponent<BoxCollider2D>().enabled = false;
+			RaycastHit2D hit = Physics2D.Raycast(pos, direction, searchRange);
+			GetComponent<BoxCollider2D>().enabled = true;
 		
-		if ( hit.collider != null ) {
-			if ( hit.collider.gameObject.name == "Player") {
-				enemyState = EnemyState.ATTACK;
+			if ( hit.collider != null ) {
+				if ( hit.collider.gameObject.name == "Player") {
+					enemyState = EnemyState.ATTACK;
+				}
+			} else {
+				player = null;
+				enemyState = EnemyState.ROAM;
 			}
 		} else {
-			player = null;
 			enemyState = EnemyState.ROAM;
 		}
 	}

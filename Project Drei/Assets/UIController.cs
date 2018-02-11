@@ -10,7 +10,7 @@ public class UIController : MonoBehaviour {
 	public Image health;
 
 	public void Start () {
-			
+		player = GameObject.Find("Player").GetComponent<PlayerScript>();
 	}
 
 	// Update is called once per frame
