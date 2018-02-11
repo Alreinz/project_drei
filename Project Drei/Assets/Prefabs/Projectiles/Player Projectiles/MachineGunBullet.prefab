@@ -131,6 +131,7 @@ MonoBehaviour:
   damage: 1
   speed: 15
   duration: 1
+  isDestroyOnHit: 1
 --- !u!212 &212537439289649056
 SpriteRenderer:
   m_ObjectHideFlags: 1

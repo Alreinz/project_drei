@@ -10,6 +10,7 @@ public class Projectile : MonoBehaviour {
     public float speed;
 	public float duration;
     private Vector2 direction;
+	public bool isDestroyOnHit;
 
     public void Initialize ( Vector2 direction ) {
 		this.transform.parent = GameObject.Find("BulletGroup").transform;
@@ -25,6 +26,8 @@ public class Projectile : MonoBehaviour {
 	}
 
     public void OnCollisionEnter2D(Collision2D collision ) {
-        Die();
+		if ( isDestroyOnHit ) {
+			Die();
+		}
     }
 }

@@ -9,43 +9,43 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1501856327141700}
+  m_RootGameObject: {fileID: 1794661974404486}
   m_IsPrefabParent: 1
---- !u!1 &1501856327141700
+--- !u!1 &1794661974404486
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4465586941958662}
-  - component: {fileID: 114128056786097854}
+  - component: {fileID: 4628473072462486}
+  - component: {fileID: 114278174840348440}
   m_Layer: 8
-  m_Name: WeaponMachineGun
+  m_Name: WeaponRailgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4465586941958662
+--- !u!4 &4628473072462486
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1501856327141700}
+  m_GameObject: {fileID: 1794661974404486}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.60317254, y: 3.845621, z: -0.02}
+  m_LocalPosition: {x: 3.2390819, y: -0.7539568, z: -0.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114128056786097854
+--- !u!114 &114278174840348440
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1501856327141700}
+  m_GameObject: {fileID: 1794661974404486}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c38a5640b8776604c90679d5b3b1e689, type: 3}
@@ -53,8 +53,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Machine Gun
   sprite: {fileID: 21300000, guid: d5aef34d495147342ab79011aa9079cf, type: 3}
-  bullet: {fileID: 1306596532753404, guid: 12ede44fa179ddc42a052c71766353b6, type: 2}
+  bullet: {fileID: 1845377559034408, guid: 223cee3cbb92b1b46a1806f1ff019a6d, type: 2}
   spread: 0.1
   reloadTime: 0.1
-  recoil: 5
+  recoil: 100
   loaded: 1

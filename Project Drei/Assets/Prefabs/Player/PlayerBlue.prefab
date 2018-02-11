@@ -25,7 +25,7 @@ GameObject:
   m_Layer: 8
   m_Name: PlayerBlue
   m_TagString: Player
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2800000, guid: a7d74282f8b8e704ca7005c16bc03410, type: 3}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -289,7 +289,7 @@ MonoBehaviour:
   currentHealth: 0
   speed: 175
   speedLimit: 0
-  weapon: {fileID: 114128056786097854, guid: ace73d2f8fa31604bbcfd534bed5b98d, type: 2}
+  weapon: {fileID: 114278174840348440, guid: e6ae0831324f9e74a9b45358b8e2aea4, type: 2}
   weaponModel: {fileID: 114670427889993484}
 --- !u!114 &114670427889993484
 MonoBehaviour:

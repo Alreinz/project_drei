@@ -12,8 +12,12 @@ public class Weapon : MonoBehaviour {
 	public float recoil;
 
     public bool loaded = true;
-    
-    public bool Fire ( Vector2 direction ) {
+
+	public void Start () {
+		loaded = true;
+	}
+
+	public bool Fire ( Vector2 direction ) {
         if ( loaded ) {
             GameObject bulletObject = GameObject.Instantiate(bullet);
             bulletObject.transform.position = this.transform.position;
