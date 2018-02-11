@@ -11,6 +11,7 @@ public class EnemyGrunt : Actor {
 	[Header("Enemy Properties")]
 	public EnemyState enemyState;
 	public GameObject player;
+	public int score;
 
 	[Header("Attack Properties")]
 	public GameObject attack;
@@ -124,6 +125,7 @@ public class EnemyGrunt : Actor {
 
 	public void Die () {
 		if ( currentHealth <= 0 ) {
+			ScoreManager.Instance.AddScore(score);
 			Destroy(this.gameObject);
 		}
 	}

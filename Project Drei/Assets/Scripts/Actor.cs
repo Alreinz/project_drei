@@ -20,7 +20,7 @@ public class Actor : MonoBehaviour {
 	[Header("Properties")]
 	public ActorState state;
     public int maxHealth;
-    protected int currentHealth { get; set; }
+    public int currentHealth;
     public float speed;
     public float speedLimit;
 
