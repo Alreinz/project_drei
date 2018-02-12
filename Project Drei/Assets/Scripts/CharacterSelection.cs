@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CharacterSelection : MonoBehaviour {
 
-	public CameraFollowTarget camera;
+	public new CameraFollowTarget camera;
 	public GameObject characterSelected;
 	public int index;
 

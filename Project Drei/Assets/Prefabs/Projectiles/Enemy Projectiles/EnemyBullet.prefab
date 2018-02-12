@@ -131,6 +131,10 @@ MonoBehaviour:
   damage: 1
   speed: 3
   duration: 2
+  isDestroyOnHit: 1
+  effectOnFire: {fileID: 0}
+  effectDuring: {fileID: 0}
+  effectOnHit: {fileID: 0}
 --- !u!212 &212641310154306702
 SpriteRenderer:
   m_ObjectHideFlags: 1

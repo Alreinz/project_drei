@@ -36,6 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4676474551147490}
   - component: {fileID: 114412509717898264}
+  - component: {fileID: 114540758972447530}
   - component: {fileID: 50599179175750440}
   - component: {fileID: 61868538040628154}
   m_Layer: 11
@@ -67,7 +68,7 @@ Transform:
   m_GameObject: {fileID: 1180980286221414}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1.9999999, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 4676474551147490}
   m_RootOrder: 0
@@ -115,7 +116,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.61784565, y: 0.6622207}
+  m_Size: {x: 0.4093338, y: 0.4387331}
   m_EdgeRadius: 0
 --- !u!114 &114412509717898264
 MonoBehaviour:
@@ -131,22 +132,36 @@ MonoBehaviour:
   state: 0
   maxHealth: 10
   currentHealth: 0
-  speed: 50
+  speed: 0
   speedLimit: 0
   enemyState: 0
   player: {fileID: 0}
   score: 0
   attack: {fileID: 1388001517294202, guid: e86ccc7f6664664458b95dc53d7b728d, type: 2}
   attackDamage: 1
-  attackDelay: 2
-  attackReady: 0
+  attackDelay: 1
+  attackReady: 1
   moveDirection: {x: 0, y: 0}
-  thinkDelay: 3.5
+  thinkDelay: 0
   searchTime: 0
-  searchRange: 5
-  maxMoveTime: 1
-  minMoveTime: 3
+  searchRange: 0
+  maxMoveTime: 0
+  minMoveTime: 0
   isMoving: 0
+--- !u!114 &114540758972447530
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1257220489652456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 829091ee7bcefd54cbfa2a7802b6ac0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitFlashMaterial: {fileID: 2100000, guid: bfacc7f2b7dc1fb4f8a2b16fe5b8e9c0, type: 2}
+  originalMaterial: {fileID: 0}
+  duration: 0.05
 --- !u!212 &212476605849808028
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -161,7 +176,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 61d09ac45c09c1d45a5763cf02a6e81d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -190,4 +205,4 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
+  m_MaskInteraction: 2

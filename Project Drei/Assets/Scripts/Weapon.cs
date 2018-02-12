@@ -13,6 +13,10 @@ public class Weapon : MonoBehaviour {
 
     public bool loaded = true;
 
+	public void Awake () {
+		loaded = true;
+	}
+
 	public void Start () {
 		loaded = true;
 	}

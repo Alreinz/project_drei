@@ -39,7 +39,6 @@ public class EnemyGrunt : Actor {
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.Log(enemyState);
 		if ( enemyState == EnemyState.SEARCH ) {
 			SearchPlayer();
 		} else if ( enemyState == EnemyState.ATTACK ) {
@@ -140,6 +139,7 @@ public class EnemyGrunt : Actor {
 			Projectile projectile = collided.GetComponent<Projectile>();
 			int damage = projectile.damage;
 			TakeDamage(damage);
+			GetComponent<HitFlashEffect>().Activate(sprite);
 		}
 	}
 }

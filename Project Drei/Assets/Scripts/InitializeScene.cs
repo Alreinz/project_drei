@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InitializeScene : MonoBehaviour {
 
-	public CameraFollowTarget camera;
+	public new CameraFollowTarget camera;
 
 	public GameObject[] characters;
 

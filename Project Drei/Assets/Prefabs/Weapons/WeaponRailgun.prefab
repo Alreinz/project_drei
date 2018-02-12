@@ -34,7 +34,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1794661974404486}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.2390819, y: -0.7539568, z: -0.02}
+  m_LocalPosition: {x: 1.4044629, y: 0.59459555, z: -0.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -54,7 +54,7 @@ MonoBehaviour:
   weaponName: Machine Gun
   sprite: {fileID: 21300000, guid: d5aef34d495147342ab79011aa9079cf, type: 3}
   bullet: {fileID: 1845377559034408, guid: 223cee3cbb92b1b46a1806f1ff019a6d, type: 2}
-  spread: 0.1
-  reloadTime: 0.1
-  recoil: 100
-  loaded: 1
+  spread: 0
+  reloadTime: 1.5
+  recoil: 50
+  loaded: 0
