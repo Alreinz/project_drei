@@ -35,7 +35,7 @@ public class LevelScript : MonoBehaviour {
 	public int enemyCount;
 	
 	public GameObject gameScreen;
-	public GameObject endGameScreen;
+	public UIEndGameScreen endGameScreen;
 
 	[SerializeField]
 	public Level[] levelList;
@@ -45,6 +45,7 @@ public class LevelScript : MonoBehaviour {
 		PrepareLevel();
 
 		EventManager.StartListening("EnemyDied", EnemyDied);
+		EventManager.StartListening("LoseGame", LoseGame);
 	} 
 
 	public void PrepareLevel () {
@@ -53,7 +54,7 @@ public class LevelScript : MonoBehaviour {
 			enemyCount = currentLevel.SpawnEnemies();
 			currentlevelIndex++;
 		} else if ( currentlevelIndex == levelList.Length ) {
-			EndGame();
+			WinGame();
 		}
 	}
 
@@ -65,8 +66,13 @@ public class LevelScript : MonoBehaviour {
 		}
 	}
 
-	public void EndGame () {
+	public void WinGame () {
 		gameScreen.SetActive(false);
-		endGameScreen.SetActive(true);
+		endGameScreen.Activate(true);
+	}
+
+	public void LoseGame() {
+		gameScreen.SetActive(false);
+		endGameScreen.Activate(false);
 	}
 }

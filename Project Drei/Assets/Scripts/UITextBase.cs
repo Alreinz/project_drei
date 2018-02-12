@@ -6,12 +6,16 @@ using UnityEngine.UI;
 public abstract class UITextBase<E> : MonoBehaviour {
 
 	public E target;
-	private Text text;
+	public Text text;
 
 	// Use this for initialization
 	void Start () {
 		text = GetComponent<Text>();
 		Initialize();
+	}
+
+	private void Awake () {
+		text = GetComponent<Text>();
 	}
 
 	public abstract void Initialize();

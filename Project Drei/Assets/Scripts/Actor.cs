@@ -24,6 +24,8 @@ public class Actor : MonoBehaviour {
     public float speed;
     public float speedLimit;
 
+	[Header("Flags")]
+	public bool isActive;
 
 	protected virtual void Start () {
 		state = ActorState.IDLE;

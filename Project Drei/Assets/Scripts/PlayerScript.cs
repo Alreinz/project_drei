@@ -6,7 +6,6 @@ public class PlayerScript : Actor {
 
     public Weapon weapon;
     public WeaponModel weaponModel;
-
     private Vector2 direction;
 
 	// Update is called once per frame
@@ -96,6 +95,7 @@ public class PlayerScript : Actor {
 	public void Die () {
 		if ( currentHealth <= 0 ) {
 			Destroy(this.gameObject);
+			EventManager.TriggerEvent("LoseGame");
 		}
 	}
 

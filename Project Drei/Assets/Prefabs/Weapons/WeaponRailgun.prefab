@@ -56,5 +56,5 @@ MonoBehaviour:
   bullet: {fileID: 1845377559034408, guid: 223cee3cbb92b1b46a1806f1ff019a6d, type: 2}
   spread: 0
   reloadTime: 1.5
-  recoil: 50
+  recoil: 5
   loaded: 0
