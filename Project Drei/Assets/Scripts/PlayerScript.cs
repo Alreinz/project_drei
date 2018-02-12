@@ -44,6 +44,10 @@ public class PlayerScript : Actor {
         }
     }
 
+	public void ResetPosition () {
+		transform.position = new Vector2(0, 0);
+	}
+
     public void MoveUp () {
         body.AddForce(new Vector2(0, speed));
     }
@@ -72,10 +76,7 @@ public class PlayerScript : Actor {
             if ( weaponFired ) {
 				float recoil = weapon.recoil;
 				body.AddForce(-direction * recoil, ForceMode2D.Impulse);
-
-				Vector2 pos = weaponModel.transform.localPosition;
-				pos += -direction * (recoil / 2);
-				weaponModel.transform.localPosition = pos;
+				weaponModel.Recoil(direction, recoil);
 
 				GameObject.Find("CameraShake").GetComponent<CameraShake>().shakeAmount = recoil / 100f;
 				GameObject.Find("CameraShake").GetComponent<CameraShake>().shakeDuration = .1f;

@@ -5,7 +5,6 @@ using UnityEngine;
 public class ScoreManager : MonoBehaviour {
 	
 	private static ScoreManager instance = new ScoreManager();
-	private ScoreManager() { }
 	public static ScoreManager Instance { get { return instance; } }
 	
 	public int score = 0;

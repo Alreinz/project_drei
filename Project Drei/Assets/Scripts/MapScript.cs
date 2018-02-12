@@ -8,6 +8,8 @@ public class MapScript : MonoBehaviour {
 	public int sizeX;
 	public int sizeY;
 	public float tileSize;
+	public float mapWidth { get { return sizeX * tileSize; } }
+	public float mapHeight { get { return sizeY * tileSize; } }
 
 	public Sprite[] tileSprite;
 
@@ -29,11 +31,5 @@ public class MapScript : MonoBehaviour {
 				}
 			}
 		}
-		Debug.Log("Map Loaded");
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
 	}
 }

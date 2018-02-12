@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum EnemyState {
-	SEARCH, ATTACK, ROAM, IDLE
+	SPAWNING, SEARCH, ATTACK, ROAM, IDLE
 }
 
 public class EnemyGrunt : Actor {
@@ -11,7 +11,6 @@ public class EnemyGrunt : Actor {
 	[Header("Enemy Properties")]
 	public EnemyState enemyState;
 	public GameObject player;
-	public int score;
 
 	[Header("Attack Properties")]
 	public GameObject attack;
@@ -26,29 +25,52 @@ public class EnemyGrunt : Actor {
 	public float searchRange;
 	public float maxMoveTime;
 	public float minMoveTime;
+
+	[Header("Effects")]
+	public ParticleSystem duringSpawn;
+	public ParticleSystem effectOnSpawn;
+	public ParticleSystem effectOnDeath;
+
+	public bool isActive;
 	public bool isMoving;
 
 
 	// Use this for initialization
 	protected override void Start () {
 		base.Start();
-		enemyState = EnemyState.SEARCH;
+		enemyState = EnemyState.SPAWNING;
 		SearchPlayer();
 		attackReady = true;
+		isActive = false;
+		Invoke("Activate", 3f);
+		body.isKinematic = true;
+		transform.localScale = new Vector3(1, 0, 1);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if ( enemyState == EnemyState.SEARCH ) {
-			SearchPlayer();
-		} else if ( enemyState == EnemyState.ATTACK ) {
-			AttackPlayer();
-			SearchPlayer();
-		} else if ( enemyState == EnemyState.ROAM ) {
-			MoveAround();
+		if ( isActive ) {
+			if ( enemyState == EnemyState.SEARCH ) {
+				SearchPlayer();
+			} else if ( enemyState == EnemyState.ATTACK ) {
+				AttackPlayer();
+				SearchPlayer();
+			} else if ( enemyState == EnemyState.ROAM ) {
+				MoveAround();
+			} else {
+				Invoke("SearchPlayer", thinkDelay);
+			}
 		} else {
-			Invoke("SearchPlayer", thinkDelay);
+			transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(1, 1, 1), Time.deltaTime);
 		}
+	}
+
+	public void Activate () {
+		if ( effectOnSpawn ) {
+			effectOnSpawn.Play();
+		}
+		body.isKinematic = false;
+		isActive = true;
 	}
 
 	void SearchPlayer () {
@@ -57,7 +79,6 @@ public class EnemyGrunt : Actor {
 			Vector2 playerPos = player.transform.position;
 			Vector2 pos = this.transform.position;
 			Vector2 direction = (playerPos - pos).normalized;
-			///Debug.Log( Vector2.Distance(playerPos, pos) );
 		
 			RaycastHit2D[] hits = new RaycastHit2D[2];
 			GetComponent<BoxCollider2D>().enabled = false;
@@ -128,18 +149,25 @@ public class EnemyGrunt : Actor {
 
 	public void Die () {
 		if ( currentHealth <= 0 ) {
-			ScoreManager.Instance.AddScore(score);
+			if ( effectOnDeath ) {
+				effectOnDeath.transform.parent = null;
+				effectOnDeath.Play();
+			}
+
+			EventManager.TriggerEvent("EnemyDied");
 			Destroy(this.gameObject);
 		}
 	}
 
 	private void OnCollisionEnter2D ( Collision2D collision ) {
-		GameObject collided = collision.gameObject;
-		if ( collided.tag == "FriendlyProjectile" ) {
-			Projectile projectile = collided.GetComponent<Projectile>();
-			int damage = projectile.damage;
-			TakeDamage(damage);
-			GetComponent<HitFlashEffect>().Activate(sprite);
+		if ( isActive ) {
+			GameObject collided = collision.gameObject;
+			if ( collided.tag == "FriendlyProjectile" ) {
+				Projectile projectile = collided.GetComponent<Projectile>();
+				int damage = projectile.damage;
+				TakeDamage(damage);
+				GetComponent<HitFlashEffect>().Activate(sprite);
+			}
 		}
 	}
 }

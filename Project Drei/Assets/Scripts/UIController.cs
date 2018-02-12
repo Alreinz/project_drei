@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour {
 
 	public PlayerScript player;
-	public Text score;
 	public Image health;
 
 	public void Start () {
@@ -16,14 +16,17 @@ public class UIController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		UpdateHealth();
-		UpdateScore();
 	}
 
 	void UpdateHealth () {
 		health.fillAmount = player.currentHealth / (player.maxHealth * 1f);
 	}
 
-	void UpdateScore () {
-		score.text = ScoreManager.Instance.score + "";
+	public void ReturnToMainMenu () {
+		SceneManager.LoadScene(0);
+	}
+
+	public void RestartGame () {
+		SceneManager.LoadScene(1);
 	}
 }

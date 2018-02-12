@@ -24,9 +24,15 @@ public class WeaponModel : MonoBehaviour {
 
 	void ResetOriginalPosition () {
 		Vector2 pos = transform.localPosition;
-		pos = Vector2.Lerp(pos, originalPosition, Time.deltaTime * 50);
+		pos = Vector2.Lerp(pos, originalPosition, Time.deltaTime * 25);
 		transform.localPosition = pos;
 		FaceMouseDirection();
+	}
+
+	public void Recoil (Vector2 direction, float recoil) {
+		Vector2 pos = transform.localPosition;
+		pos += -direction * (recoil / 4);
+		transform.localPosition = pos;
 	}
 
 	void FaceMouseDirection () {
