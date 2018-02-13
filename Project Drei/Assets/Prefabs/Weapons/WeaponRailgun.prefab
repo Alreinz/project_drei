@@ -55,7 +55,7 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 90c2acf3724e0ee438924b2784716d5b, type: 3}
   bullet: {fileID: 1845377559034408, guid: 223cee3cbb92b1b46a1806f1ff019a6d, type: 2}
   spread: 0
-  reloadTime: 1.5
-  recoil: 5
+  reloadTime: 2
+  recoil: 6
   shootSFX: {fileID: 8300000, guid: 03dae160c8a00374894801d595e467ce, type: 3}
   loaded: 1

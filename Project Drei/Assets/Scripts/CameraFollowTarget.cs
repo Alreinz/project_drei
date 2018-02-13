@@ -14,6 +14,11 @@ public class CameraFollowTarget : MonoBehaviour {
 			pos = Vector3.MoveTowards(pos, target.transform.position, Time.deltaTime * trackSpeed);
 			pos.z = -10;
 			transform.position = pos;
+		} else {
+			Vector3 pos = transform.position;
+			pos = Vector3.MoveTowards(pos, new Vector3(0, 5, 0), Time.deltaTime * trackSpeed);
+			pos.z = -10;
+			transform.position = pos;
 		}
 	}
 }

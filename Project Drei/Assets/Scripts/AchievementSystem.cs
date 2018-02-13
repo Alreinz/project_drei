@@ -8,11 +8,6 @@ public class AchievementSystem : MonoBehaviour {
 	public GameObject achievementTextObject;
 	public AudioClip achievementSound;
 	public AudioSource audio;
-
-	// Use this for initialization
-	void Start () {
-		
-	}
 	
 	// Update is called once per frame
 	void Update () {

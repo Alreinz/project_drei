@@ -252,7 +252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
-  maxHealth: 15
+  maxHealth: 13
   currentHealth: 0
   speed: 25
   speedLimit: 0

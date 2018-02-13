@@ -15,6 +15,11 @@ public class CharacterSelection : MonoBehaviour {
 		characterSelected = selection;
 	}
 
+	public void Reset () {
+		camera.target = null;
+		index = 0;
+	} 
+
 	public void NextCharacter () {
 		index++;
 
