@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public abstract class UITextBase<E> : MonoBehaviour {
 
 	public E target;
-	public Text text;
+	private Text text;
 
 	// Use this for initialization
 	void Start () {

@@ -33,6 +33,7 @@ public class LevelScript : MonoBehaviour {
 
 	public int currentlevelIndex;
 	public int enemyCount;
+	public int enemyKilled { get; set; }
 	
 	public GameObject gameScreen;
 	public UIEndGameScreen endGameScreen;
@@ -41,6 +42,7 @@ public class LevelScript : MonoBehaviour {
 	public Level[] levelList;
 
 	public void Start () {
+		enemyKilled = 0;
 		enemyCount = 0;
 		PrepareLevel();
 
@@ -60,7 +62,7 @@ public class LevelScript : MonoBehaviour {
 
 	public void EnemyDied () {
 		enemyCount--;
-
+		enemyKilled++;
 		if ( enemyCount <= 0 ) {
 			PrepareLevel ();
 		}
@@ -74,5 +76,9 @@ public class LevelScript : MonoBehaviour {
 	public void LoseGame() {
 		gameScreen.SetActive(false);
 		endGameScreen.Activate(false);
+	}
+
+	public int EnemiesKilled () {
+		return enemyKilled;
 	}
 }

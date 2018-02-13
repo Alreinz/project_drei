@@ -34,7 +34,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1501856327141700}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.2207623, y: 10.985612, z: -0.02}
+  m_LocalPosition: {x: 0.51655555, y: 0.40935284, z: -0.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -57,4 +57,5 @@ MonoBehaviour:
   spread: 0.1
   reloadTime: 0.075
   recoil: 2
+  shootSFX: {fileID: 8300000, guid: a0af01b110373de4ea8b67916826645c, type: 3}
   loaded: 1

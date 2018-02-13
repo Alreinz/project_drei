@@ -57,4 +57,5 @@ MonoBehaviour:
   spread: 0.1
   reloadTime: 0.5
   recoil: 50
+  shootSFX: {fileID: 8300000, guid: 03dae160c8a00374894801d595e467ce, type: 3}
   loaded: 1

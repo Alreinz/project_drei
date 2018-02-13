@@ -10,6 +10,7 @@ public class Weapon : MonoBehaviour {
     public float spread;
     public float reloadTime;
 	public float recoil;
+	public AudioClip shootSFX;
 
     public bool loaded = true;
 

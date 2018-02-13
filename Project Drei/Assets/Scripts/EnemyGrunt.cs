@@ -16,6 +16,7 @@ public class EnemyGrunt : Actor {
 	public GameObject attack;
 	public int attackDamage;
 	public float attackDelay;
+	public float attackRange;
 	public bool attackReady;
 
 	[Header("Behavior")]
@@ -31,7 +32,7 @@ public class EnemyGrunt : Actor {
 	public ParticleSystem effectOnSpawn;
 	public ParticleSystem effectOnDeath;
 
-	public bool isActive;
+	public bool isReady;
 	public bool isMoving;
 
 
@@ -41,7 +42,7 @@ public class EnemyGrunt : Actor {
 		enemyState = EnemyState.SPAWNING;
 		SearchPlayer();
 		attackReady = true;
-		isActive = false;
+		isReady = false;
 		Invoke("Activate", 3f);
 		body.isKinematic = true;
 		transform.localScale = new Vector3(1, 0, 1);
@@ -49,7 +50,7 @@ public class EnemyGrunt : Actor {
 	
 	// Update is called once per frame
 	void Update () {
-		if ( isActive ) {
+		if ( isReady ) {
 			if ( enemyState == EnemyState.SEARCH ) {
 				SearchPlayer();
 			} else if ( enemyState == EnemyState.ATTACK ) {
@@ -70,7 +71,7 @@ public class EnemyGrunt : Actor {
 			effectOnSpawn.Play();
 		}
 		body.isKinematic = false;
-		isActive = true;
+		isReady = true;
 	}
 
 	void SearchPlayer () {
@@ -79,6 +80,7 @@ public class EnemyGrunt : Actor {
 			Vector2 playerPos = player.transform.position;
 			Vector2 pos = this.transform.position;
 			Vector2 direction = (playerPos - pos).normalized;
+
 		
 			RaycastHit2D[] hits = new RaycastHit2D[2];
 			GetComponent<BoxCollider2D>().enabled = false;
@@ -93,6 +95,13 @@ public class EnemyGrunt : Actor {
 				player = null;
 				enemyState = EnemyState.ROAM;
 			}
+
+			
+			if ( playerPos.x > pos.x ) {
+				sprite.flipX = true;
+			} else {
+				sprite.flipX = false;
+			}
 		} else {
 			enemyState = EnemyState.ROAM;
 		}
@@ -104,15 +113,19 @@ public class EnemyGrunt : Actor {
 			Vector2 playerPos = player.transform.position;
 			Vector2 pos = transform.position;
 			Vector2 direction = (playerPos - pos).normalized;
+			if ( Vector2.Distance(playerPos, pos) <= attackRange ) {
+				
+				GameObject attackObject = GameObject.Instantiate(attack);
+				Projectile projectile = attackObject.GetComponent<Projectile>();
+				projectile.Initialize(direction);
+				projectile.transform.position = transform.position;
+				projectile.damage = attackDamage;
 
-			GameObject attackObject = GameObject.Instantiate(attack);
-			Projectile projectile = attackObject.GetComponent<Projectile>();
-			projectile.Initialize(direction);
-			projectile.transform.position = transform.position;
-			projectile.damage = attackDamage;
-
-			attackReady = false;
-			Invoke("Reload", attackDelay);
+				attackReady = false;
+				Invoke("Reload", attackDelay);
+			} else {
+				body.AddForce(direction * speed);
+			}
 		} 
 	}
 
@@ -160,7 +173,7 @@ public class EnemyGrunt : Actor {
 	}
 
 	private void OnCollisionEnter2D ( Collision2D collision ) {
-		if ( isActive ) {
+		if ( isReady ) {
 			GameObject collided = collision.gameObject;
 			if ( collided.tag == "FriendlyProjectile" ) {
 				Projectile projectile = collided.GetComponent<Projectile>();

@@ -7,6 +7,7 @@ public class PlayerScript : Actor {
     public Weapon weapon;
     public WeaponModel weaponModel;
     private Vector2 direction;
+	public AudioSource audio;
 
 	// Update is called once per frame
 	void Update () {
@@ -76,12 +77,18 @@ public class PlayerScript : Actor {
 				float recoil = weapon.recoil;
 				body.AddForce(-direction * recoil, ForceMode2D.Impulse);
 				weaponModel.Recoil(direction, recoil);
+				ShootSFX();
 
 				GameObject.Find("CameraShake").GetComponent<CameraShake>().shakeAmount = recoil / 100f;
 				GameObject.Find("CameraShake").GetComponent<CameraShake>().shakeDuration = .1f;
             }
         }
     }
+
+	void ShootSFX () {
+		audio.clip = weapon.shootSFX;
+		audio.Play();
+	}
 	
 	public void TakeDamage ( int damage ) {
 		if ( damage > 0 ) {

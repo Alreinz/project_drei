@@ -11,6 +11,7 @@ public class WeaponModel : MonoBehaviour {
 
 	void Start () {
         spriteRenderer = GetComponent<SpriteRenderer>();
+		originalPosition = transform.localPosition;
     }
 
     void Update() {
