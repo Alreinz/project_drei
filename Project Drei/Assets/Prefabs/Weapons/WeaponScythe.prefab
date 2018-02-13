@@ -56,6 +56,6 @@ MonoBehaviour:
   bullet: {fileID: 1400829683205670, guid: 1b402572c8f4b6947a31c924786314d4, type: 2}
   spread: 0.1
   reloadTime: 0.5
-  recoil: 50
-  shootSFX: {fileID: 8300000, guid: 03dae160c8a00374894801d595e467ce, type: 3}
+  recoil: 1
+  shootSFX: {fileID: 8300000, guid: 3c208eacc6564494bbaae08714f6f691, type: 3}
   loaded: 1

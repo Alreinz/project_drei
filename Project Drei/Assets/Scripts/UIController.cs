@@ -16,6 +16,10 @@ public class UIController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		UpdateHealth();
+
+		if ( Input.GetKeyDown(KeyCode.Escape)) {
+			SceneManager.LoadScene(0);
+		}
 	}
 
 	void UpdateHealth () {
